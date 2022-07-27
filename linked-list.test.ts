@@ -42,7 +42,6 @@ describe('LinkedList', () => {
     expect(list.shift()).toBe(10)
     list.unshift(40)
     list.push(50)
-    list.print()
     expect(list.shift()).toBe(40)
     expect(list.pop()).toBe(50)
     expect(list.shift()).toBe(30)
@@ -88,7 +87,6 @@ describe('LinkedList', () => {
 
   it('deletes the only element', () => {
     const list = new LinkedList<number>()
-    console.log(list.count())
     list.push(10)
     list.delete(10)
     expect(list.count()).toBe(0)

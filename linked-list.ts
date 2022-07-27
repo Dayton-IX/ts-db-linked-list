@@ -96,7 +96,7 @@ export class LinkedList<TElement> {
 
   public delete(element: unknown): void {
     let current = this.tail;
-    while (current !== this.head) {
+    for (let i = 0; i < this.length; i++) {
       if (current) {
         if (current.value === element) {
           current.next ? current.next.prev = current.prev : null
