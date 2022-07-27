@@ -52,6 +52,10 @@ export class LinkedList<TElement> {
       }
 
       this.length--
+      if (this.length <= 0) {
+        this.head = null
+        this.tail = null
+      }
       return poppedVal
     }
     return null
@@ -65,7 +69,12 @@ export class LinkedList<TElement> {
       if (this.tail) {
         this.tail.prev = null
       }
+
       this.length --
+      if (this.length <= 0) {
+        this.head = null
+        this.tail = null
+      }
       return shiftedVal
     }
     return null
@@ -86,7 +95,18 @@ export class LinkedList<TElement> {
   }
 
   public delete(element: unknown): void {
-    throw new Error('Remove this statement and implement this function')
+    let current = this.tail;
+    while (current !== this.head) {
+      if (current) {
+        if (current.value === element) {
+          current.next ? current.next.prev = current.prev : null
+          current.prev ? current.prev.next = current.next : null
+          this.length--
+          break
+        }
+        current = current.next
+      }
+    }
   }
 
   public count(): number {
